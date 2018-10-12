@@ -17,7 +17,7 @@ test('HexGrid should render correctly with custom props', () => {
     <HexGrid
       width={888}
       height={666}
-      viewBox={'-150 -150 1100 1100'}
+      viewBox={{ x: -150, y: -150, width: 1100, height: 1100 }}
     >
       <div>child</div>
     </HexGrid>,

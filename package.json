@@ -14,7 +14,7 @@
     "test": "jest --coverage"
   },
   "peerDependencies": {
-    "prop-types": "^15.0.1",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2"
   },
   "devDependencies": {

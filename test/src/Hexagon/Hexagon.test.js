@@ -103,7 +103,6 @@ test('Hexagon should work', () => {
       </Hexagon>
     </Layout>,
   );
-  console.log(wrapper2.find('g.test2').length);
   expect(wrapper2.find('g.test2').length).toBe(1);
 
   wrapper2.find('g.test2').simulate('mouseEnter');

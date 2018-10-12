@@ -1,5 +1,196 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Layout should only render hexagons in bounds 1`] = `
+<g
+  className="test2"
+>
+  <g
+    className="hexagon-group"
+    draggable="true"
+    onClick={[Function]}
+    onDragEnd={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    transform="translate(0, 0)"
+  >
+    <g
+      className="hexagon"
+    >
+      <polygon
+        fill={null}
+        points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
+      />
+    </g>
+  </g>
+</g>
+`;
+
+exports[`Layout should only render hexagons in bounds again 1`] = `
+<g
+  className="test2"
+>
+  <g
+    className="hexagon-group"
+    draggable="true"
+    onClick={[Function]}
+    onDragEnd={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    transform="translate(-41.569219381653056, 0)"
+  >
+    <g
+      className="hexagon"
+    >
+      <polygon
+        fill={null}
+        points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
+      />
+    </g>
+  </g>
+  <g
+    className="hexagon-group"
+    draggable="true"
+    onClick={[Function]}
+    onDragEnd={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    transform="translate(-20.784609690826528, 42)"
+  >
+    <g
+      className="hexagon"
+    >
+      <polygon
+        fill={null}
+        points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
+      />
+    </g>
+  </g>
+  <g
+    className="hexagon-group"
+    draggable="true"
+    onClick={[Function]}
+    onDragEnd={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    transform="translate(-20.784609690826528, -42)"
+  >
+    <g
+      className="hexagon"
+    >
+      <polygon
+        fill={null}
+        points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
+      />
+    </g>
+  </g>
+  <g
+    className="hexagon-group"
+    draggable="true"
+    onClick={[Function]}
+    onDragEnd={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    transform="translate(0, 0)"
+  >
+    <g
+      className="hexagon"
+    >
+      <polygon
+        fill={null}
+        points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
+      />
+    </g>
+  </g>
+  <g
+    className="hexagon-group"
+    draggable="true"
+    onClick={[Function]}
+    onDragEnd={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    transform="translate(20.784609690826528, 42)"
+  >
+    <g
+      className="hexagon"
+    >
+      <polygon
+        fill={null}
+        points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
+      />
+    </g>
+  </g>
+  <g
+    className="hexagon-group"
+    draggable="true"
+    onClick={[Function]}
+    onDragEnd={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    transform="translate(20.784609690826528, -42)"
+  >
+    <g
+      className="hexagon"
+    >
+      <polygon
+        fill={null}
+        points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
+      />
+    </g>
+  </g>
+  <g
+    className="hexagon-group"
+    draggable="true"
+    onClick={[Function]}
+    onDragEnd={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    transform="translate(41.569219381653056, 0)"
+  >
+    <g
+      className="hexagon"
+    >
+      <polygon
+        fill={null}
+        points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
+      />
+    </g>
+  </g>
+  ;
+</g>
+`;
+
 exports[`Layout should render correctly with custom props 1`] = `
 <g
   className="test2"
