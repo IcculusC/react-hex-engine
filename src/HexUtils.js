@@ -121,10 +121,9 @@ class HexUtils {
   }
 
   isHexLike(obj) {
+    const { q, r, s } = obj;
     return (
-      typeof obj.q === "number" &&
-      typeof obj.r === "number" &&
-      typeof obj.s === "number"
+      typeof q === "number" && typeof r === "number" && typeof s === "number"
     );
   }
 }
