@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import HexUtils from "./HexUtils";
-import { LayoutConsumer } from "./Layout";
+import { withExpandedLayout } from "./Context";
 
 class Path extends Component {
   static propTypes = {
@@ -42,8 +42,4 @@ class Path extends Component {
   }
 }
 
-export default props => (
-  <LayoutConsumer>
-    {({ layout }) => <Path layout={layout} {...props} />}
-  </LayoutConsumer>
-);
+export default withExpandedLayout(Path);

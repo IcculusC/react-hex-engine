@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import Hex from "../models/Hex";
 import HexUtils from "../HexUtils";
-import { LayoutConsumer } from "../Layout";
+import { withExpandedLayout } from "../Context";
 
 class Hexagon extends Component {
   static propTypes = {
@@ -124,10 +124,4 @@ class Hexagon extends Component {
   }
 }
 
-export default props => (
-  <LayoutConsumer>
-    {({ layout, points }) => (
-      <Hexagon layout={layout} points={points} {...props} />
-    )}
-  </LayoutConsumer>
-);
+export default withExpandedLayout(Hexagon);

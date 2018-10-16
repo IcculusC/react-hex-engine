@@ -4,7 +4,7 @@ import HexUtils from "./HexUtils";
 import Orientation from "./models/Orientation";
 import Point from "./models/Point";
 import Hexagon from "./Hexagon/Hexagon";
-import { ViewBoxConsumer } from "./HexGrid";
+import { LayoutProvider, withViewBox } from "./Context";
 
 export const LAYOUT_FLAT = new Orientation(
   3.0 / 2.0,
@@ -29,7 +29,7 @@ export const LAYOUT_POINTY = new Orientation(
   0.5
 );
 
-class Layout extends Component {
+export class Layout extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
@@ -46,19 +46,18 @@ class Layout extends Component {
     origin: new Point(0, 0)
   };
 
-  getPointOffset(corner, orientation, size) {
+  static getPointOffset(corner, orientation, size) {
     let angle = (2.0 * Math.PI * (corner + orientation.startAngle)) / 6;
     return new Point(size.x * Math.cos(angle), size.y * Math.sin(angle));
   }
 
   // TODO Refactor
-  calculateCoordinates(orientation) {
+  static calculateCoordinates(orientation, size) {
     const corners = [];
     const center = new Point(0, 0);
-    const { size } = this.props;
 
     Array.from(new Array(6), (x, i) => {
-      const offset = this.getPointOffset(i, orientation, size);
+      const offset = Layout.getPointOffset(i, orientation, size);
       const point = new Point(center.x + offset.x, center.y + offset.y);
       return corners.push(point);
     });
@@ -66,9 +65,13 @@ class Layout extends Component {
     return corners;
   }
 
-  filterChildren(children, cornerCoords, viewBox, layout) {
+  static filterChildren(children, viewBox, layout) {
     const { x, y, width, height } = viewBox;
-    const filtered_ = React.Children.toArray(children).filter(child => {
+    const cornerCoords = Layout.calculateCoordinates(
+      layout.orientation,
+      layout.size
+    );
+    return children.filter(child => {
       if (!child.props) {
         return true;
       }
@@ -93,22 +96,37 @@ class Layout extends Component {
       }
       return true;
     });
-
-    return filtered_;
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const children = React.Children.toArray(nextProps.children);
+    if (
+      prevState.viewBox !== nextProps.viewBox ||
+      prevState.childCount !== children.length
+    ) {
+      const { flat, viewBox, ...rest } = nextProps;
+      const orientation = flat ? LAYOUT_FLAT : LAYOUT_POINTY;
+      const layout = { ...rest, orientation };
+
+      return {
+        childCount: children.length,
+        inBounds: Layout.filterChildren(children, viewBox, layout),
+        viewBox
+      };
+    }
+    return null;
+  }
+
+  state = { childCount: 0, inBounds: [], viewBox: {} };
+
   render() {
-    const { children = [], flat, className, viewBox, ...rest } = this.props;
+    const { flat, className, size, viewBox, ...rest } = this.props;
+    const { inBounds } = this.state;
     const orientation = flat ? LAYOUT_FLAT : LAYOUT_POINTY;
-    const cornerCoords = this.calculateCoordinates(orientation);
-    const points = cornerCoords.map(point => `${point.x},${point.y}`).join(" ");
-    const layout = { ...rest, orientation };
-    const inBounds = this.filterChildren(
-      children,
-      cornerCoords,
-      viewBox,
-      layout
-    );
+    const points = Layout.calculateCoordinates(orientation, size)
+      .map(point => `${point.x},${point.y}`)
+      .join(" ");
+    const layout = { ...rest, orientation, size };
     return (
       <LayoutProvider value={{ layout, points }}>
         <g className={className}>{inBounds}</g>
@@ -117,17 +135,4 @@ class Layout extends Component {
   }
 }
 
-export const LayoutContext = React.createContext({
-  layout: LAYOUT_FLAT,
-  points: ""
-});
-export const {
-  Provider: LayoutProvider,
-  Consumer: LayoutConsumer
-} = LayoutContext;
-
-export default props => (
-  <ViewBoxConsumer>
-    {viewBox => <Layout {...props} viewBox={viewBox} />}
-  </ViewBoxConsumer>
-);
+export default withViewBox(Layout);

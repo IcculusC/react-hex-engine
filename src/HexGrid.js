@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { ViewBoxProvider } from "./Context";
 
 class HexGrid extends Component {
   static propTypes = {
@@ -42,16 +43,5 @@ class HexGrid extends Component {
     );
   }
 }
-
-export const ViewBoxContext = React.createContext({
-  x: -50,
-  y: -50,
-  width: 100,
-  height: 100
-});
-export const {
-  Provider: ViewBoxProvider,
-  Consumer: ViewBoxConsumer
-} = ViewBoxContext;
 
 export default HexGrid;
