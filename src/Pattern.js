@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import HexUtils from './HexUtils';
-import Point from './models/Point';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Point from "./models/Point";
 
 class Pattern extends Component {
   static propTypes = {
@@ -18,8 +17,21 @@ class Pattern extends Component {
 
     return (
       <defs>
-        <pattern id={id} patternUnits="objectBoundingBox" x={0} y={0} width={size.x} height={size.y}>
-          <image xlinkHref={link} x={0} y={0} width={size.x*2} height={size.y*2} />
+        <pattern
+          id={id}
+          patternUnits="objectBoundingBox"
+          x={0}
+          y={0}
+          width={size.x}
+          height={size.y}
+        >
+          <image
+            xlinkHref={link}
+            x={0}
+            y={0}
+            width={size.x * 2}
+            height={size.y * 2}
+          />
         </pattern>
       </defs>
     );

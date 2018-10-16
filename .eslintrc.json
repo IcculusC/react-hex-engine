@@ -1,0 +1,17 @@
+{
+    "extends": [
+        "react-app",
+        "plugin:prettier/recommended",
+        "prettier/flowtype",
+        "prettier/react"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "jsx-a11y/href-no-hash": [
+            0
+        ]
+    }
+}

@@ -1,18 +1,19 @@
-import Hex from './models/Hex';
-import HexUtils from './HexUtils'
+import Hex from "./models/Hex";
+import HexUtils from "./HexUtils";
 
 class GridGenerator {
-
   static getGenerator(name) {
-    if (GridGenerator.hasOwnProperty(name))
-      return GridGenerator[name];
+    if (GridGenerator.hasOwnProperty(name)) return GridGenerator[name];
 
     return null;
   }
 
-  static ring (center, mapRadius) {
+  static ring(center, mapRadius) {
     let hexas = [];
-    let hex = HexUtils.add(center, HexUtils.multiply(HexUtils.direction(4), mapRadius));
+    let hex = HexUtils.add(
+      center,
+      HexUtils.multiply(HexUtils.direction(4), mapRadius)
+    );
     for (let i = 0; i < 6; i++) {
       for (let j = 0; j < mapRadius; j++) {
         hexas.push(hex);
@@ -22,7 +23,7 @@ class GridGenerator {
     return hexas;
   }
 
-  static spiral(center, mapRadius){
+  static spiral(center, mapRadius) {
     let results = [center];
     for (let k = 1; k <= mapRadius; k++) {
       const temp = this.ring(center, k);
@@ -35,7 +36,7 @@ class GridGenerator {
     let hexas = [];
     for (let q = q1; q <= q2; q++) {
       for (let r = r1; r <= r2; r++) {
-        hexas.push(new Hex(q, r, -q-r));
+        hexas.push(new Hex(q, r, -q - r));
       }
     }
 
@@ -46,7 +47,7 @@ class GridGenerator {
     let hexas = [];
     for (let q = 0; q <= mapSize; q++) {
       for (let r = 0; r <= mapSize - q; r++) {
-        hexas.push(new Hex(q, r, -q-r));
+        hexas.push(new Hex(q, r, -q - r));
       }
     }
 
@@ -59,7 +60,7 @@ class GridGenerator {
       let r1 = Math.max(-mapRadius, -q - mapRadius);
       let r2 = Math.min(mapRadius, -q + mapRadius);
       for (let r = r1; r <= r2; r++) {
-        hexas.push(new Hex(q, r, -q-r));
+        hexas.push(new Hex(q, r, -q - r));
       }
     }
 
@@ -69,9 +70,9 @@ class GridGenerator {
   static rectangle(mapWidth, mapHeight) {
     let hexas = [];
     for (let r = 0; r < mapHeight; r++) {
-      let offset = Math.floor(r/2); // or r>>1
+      let offset = Math.floor(r / 2); // or r>>1
       for (let q = -offset; q < mapWidth - offset; q++) {
-        hexas.push(new Hex(q, r, -q-r));
+        hexas.push(new Hex(q, r, -q - r));
       }
     }
 
@@ -81,15 +82,14 @@ class GridGenerator {
   static orientedRectangle(mapWidth, mapHeight) {
     let hexas = [];
     for (let q = 0; q < mapWidth; q++) {
-      let offset = Math.floor(q/2); // or q>>1
+      let offset = Math.floor(q / 2); // or q>>1
       for (let r = -offset; r < mapHeight - offset; r++) {
-        hexas.push(new Hex(q, r, -q-r));
+        hexas.push(new Hex(q, r, -q - r));
       }
     }
 
     return hexas;
   }
-
 }
 
 export default GridGenerator;

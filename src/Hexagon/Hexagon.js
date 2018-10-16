@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Hex from '../models/Hex';
-import HexUtils from '../HexUtils';
-import { LayoutConsumer } from '../Layout';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import Hex from "../models/Hex";
+import HexUtils from "../HexUtils";
+import { LayoutConsumer } from "../Layout";
 
 class Hexagon extends Component {
   static propTypes = {
@@ -13,10 +13,7 @@ class Hexagon extends Component {
     layout: PropTypes.objectOf(PropTypes.any).isRequired,
     points: PropTypes.string.isRequired,
     fill: PropTypes.string,
-    cellStyle: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object
-    ]),
+    cellStyle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     className: PropTypes.string,
     data: PropTypes.object,
     onMouseEnter: PropTypes.func,
@@ -36,9 +33,11 @@ class Hexagon extends Component {
     const pixel = HexUtils.hexToPixel(hex, layout);
 
     if (
-      (!prevState.hex && !prevState.pixel)
-      || !((HexUtils.equals(prevState.hex, hex))
-        || (prevState.pixel.x === pixel.x && prevState.pixel.y === pixel.y))
+      (!prevState.hex && !prevState.pixel) ||
+      !(
+        HexUtils.equals(prevState.hex, hex) ||
+        (prevState.pixel.x === pixel.x && prevState.pixel.y === pixel.y)
+      )
     ) {
       return { hex, pixel };
     }
@@ -75,14 +74,14 @@ class Hexagon extends Component {
         fill: this.props.fill,
         className: this.props.className
       };
-      e.dataTransfer.setData('hexagon', JSON.stringify(targetProps));
+      e.dataTransfer.setData("hexagon", JSON.stringify(targetProps));
       this.props.onDragStart(e, this);
     }
   }
   onDragEnd(e) {
     if (this.props.onDragEnd) {
       e.preventDefault();
-      const success = (e.dataTransfer.dropEffect !== 'none');
+      const success = e.dataTransfer.dropEffect !== "none";
       this.props.onDragEnd(e, this, success);
     }
   }
@@ -94,17 +93,17 @@ class Hexagon extends Component {
   onDrop(e) {
     if (this.props.onDrop) {
       e.preventDefault();
-      const target = JSON.parse(e.dataTransfer.getData('hexagon'));
+      const target = JSON.parse(e.dataTransfer.getData("hexagon"));
       this.props.onDrop(e, this, target);
     }
   }
   render() {
     const { fill, cellStyle, className, points } = this.props;
-    const { hex, pixel } = this.state;
-    const fillId = (fill) ? `url(#${fill})` : null;
+    const { pixel } = this.state;
+    const fillId = fill ? `url(#${fill})` : null;
     return (
       <g
-        className={classNames('hexagon-group', className)}
+        className={classNames("hexagon-group", className)}
         transform={`translate(${pixel.x}, ${pixel.y})`}
         draggable="true"
         onMouseEnter={e => this.onMouseEnter(e)}
@@ -125,4 +124,10 @@ class Hexagon extends Component {
   }
 }
 
-export default props => <LayoutConsumer>{({layout, points}) => <Hexagon layout={layout} points={points} {...props} />}</LayoutConsumer>;
+export default props => (
+  <LayoutConsumer>
+    {({ layout, points }) => (
+      <Hexagon layout={layout} points={points} {...props} />
+    )}
+  </LayoutConsumer>
+);

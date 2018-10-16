@@ -1,15 +1,18 @@
-import Hex from './models/Hex';
-import Point from './models/Point';
+import Hex from "./models/Hex";
+import Point from "./models/Point";
 
 class HexUtils {
-
   static DIRECTIONS = [
-    new Hex(1, 0, -1), new Hex(1, -1, 0), new Hex(0, -1, 1),
-    new Hex(-1, 0, 1), new Hex(-1, 1, 0), new Hex(0, 1, -1)
+    new Hex(1, 0, -1),
+    new Hex(1, -1, 0),
+    new Hex(0, -1, 1),
+    new Hex(-1, 0, 1),
+    new Hex(-1, 1, 0),
+    new Hex(0, 1, -1)
   ];
 
   static equals(a, b) {
-    return a.q == b.q && a.r == b.r && a.s == b.s;
+    return a.q === b.q && a.r === b.r && a.s === b.s;
   }
 
   static add(a, b) {
@@ -50,20 +53,17 @@ class HexUtils {
   }
 
   static round(hex) {
-    let rq = Math.round(hex.q)
-    let rr = Math.round(hex.r)
-    let rs = Math.round(hex.s)
+    let rq = Math.round(hex.q);
+    let rr = Math.round(hex.r);
+    let rs = Math.round(hex.s);
 
-    const qDiff = Math.abs(rq - hex.q)
-    const rDiff = Math.abs(rr - hex.r)
-    const sDiff = Math.abs(rs - hex.s)
+    const qDiff = Math.abs(rq - hex.q);
+    const rDiff = Math.abs(rr - hex.r);
+    const sDiff = Math.abs(rs - hex.s);
 
-    if (qDiff > rDiff && qDiff > sDiff)
-        rq = -rr-rs
-    else if (rDiff > sDiff)
-        rr = -rq-rs
-    else
-        rs = -rq-rr
+    if (qDiff > rDiff && qDiff > sDiff) rq = -rr - rs;
+    else if (rDiff > sDiff) rr = -rq - rs;
+    else rs = -rq - rr;
 
     return new Hex(rq, rr, rs);
   }
@@ -81,7 +81,10 @@ class HexUtils {
 
   static pixelToHex(point, layout) {
     const M = layout.orientation;
-    const pt = new Point((point.x - layout.origin.x) / layout.size.x, (point.y - layout.origin.y) / layout.size.y);
+    const pt = new Point(
+      (point.x - layout.origin.x) / layout.size.x,
+      (point.y - layout.origin.y) / layout.size.y
+    );
     const q = M.b0 * pt.x + M.b1 * pt.y;
     const r = M.b2 * pt.x + M.b3 * pt.y;
     const hex = new Hex(q, r, -q - r);
@@ -89,11 +92,15 @@ class HexUtils {
   }
 
   static lerp(a, b, t) {
-    return a + ((b - a) * t);
+    return a + (b - a) * t;
   }
 
   static hexLerp(a, b, t) {
-    return new Hex(HexUtils.lerp(a.q, b.q, t), HexUtils.lerp(a.r, b.r, t), HexUtils.lerp(a.s, b.s, t));
+    return new Hex(
+      HexUtils.lerp(a.q, b.q, t),
+      HexUtils.lerp(a.r, b.r, t),
+      HexUtils.lerp(a.s, b.s, t)
+    );
   }
 
   static getID(hex) {
