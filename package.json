@@ -1,17 +1,17 @@
 {
   "name": "react-hex-engine",
-  "description": "Interactive hexagon grids with React bindings",
+  "description": "Hexagon Map Editor and Game Engine",
   "version": "1.0.4",
   "main": "lib/index.js",
-  "author": "Hellenic",
+  "author": "IcculusC",
   "repository": "IcculusC/react-hex-engine",
   "license": "MIT",
   "scripts": {
     "compile": "babel src/ --out-dir lib",
     "bundle": "babel src/ --out-file dist/react-hexgrid.js",
     "prepublish": "npm run compile",
-    "test:watch": "jest --watch --coverage",
-    "test": "jest --coverage",
+    "test": "node ./node_modules/.bin/jest --env=jsdom",
+    "test:coverage": "npm run test -- --coverage",
     "lint": "eslint ./src"
   },
   "peerDependencies": {
@@ -48,8 +48,7 @@
     "classnames": "^2.2.5"
   },
   "files": [
-    "lib/",
-    "dist/"
+    "lib/**/*"
   ],
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>test/setupTests.js"
