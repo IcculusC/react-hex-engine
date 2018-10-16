@@ -21,7 +21,7 @@ exports[`Layout should only render hexagons in bounds 1`] = `
       className="hexagon"
     >
       <polygon
-        fill={null}
+        className=""
         points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
       />
     </g>
@@ -50,7 +50,7 @@ exports[`Layout should only render hexagons in bounds again 1`] = `
       className="hexagon"
     >
       <polygon
-        fill={null}
+        className=""
         points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
       />
     </g>
@@ -72,7 +72,7 @@ exports[`Layout should only render hexagons in bounds again 1`] = `
       className="hexagon"
     >
       <polygon
-        fill={null}
+        className=""
         points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
       />
     </g>
@@ -94,7 +94,7 @@ exports[`Layout should only render hexagons in bounds again 1`] = `
       className="hexagon"
     >
       <polygon
-        fill={null}
+        className=""
         points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
       />
     </g>
@@ -116,7 +116,7 @@ exports[`Layout should only render hexagons in bounds again 1`] = `
       className="hexagon"
     >
       <polygon
-        fill={null}
+        className=""
         points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
       />
     </g>
@@ -138,7 +138,7 @@ exports[`Layout should only render hexagons in bounds again 1`] = `
       className="hexagon"
     >
       <polygon
-        fill={null}
+        className=""
         points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
       />
     </g>
@@ -160,7 +160,7 @@ exports[`Layout should only render hexagons in bounds again 1`] = `
       className="hexagon"
     >
       <polygon
-        fill={null}
+        className=""
         points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
       />
     </g>
@@ -182,7 +182,7 @@ exports[`Layout should only render hexagons in bounds again 1`] = `
       className="hexagon"
     >
       <polygon
-        fill={null}
+        className=""
         points="10.392304845413264,6.999999999999999 7.347880794884119e-16,14 -10.392304845413264,6.999999999999999 -10.392304845413266,-6.9999999999999964 -2.204364238465236e-15,-14 10.39230484541326,-7.000000000000006"
       />
     </g>
@@ -194,19 +194,11 @@ exports[`Layout should only render hexagons in bounds again 1`] = `
 exports[`Layout should render correctly with custom props 1`] = `
 <g
   className="test2"
->
-  <div>
-    child
-  </div>
-</g>
+/>
 `;
 
 exports[`Layout should render correctly with default props 1`] = `
 <g
   className="test1"
->
-  <div>
-    child
-  </div>
-</g>
+/>
 `;

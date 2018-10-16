@@ -1,41 +1,44 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { ViewBoxProvider } from "./Context";
 
 class HexGrid extends Component {
   static propTypes = {
-    width: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.number.isRequired
-    ]),
+    children: PropTypes.node.isRequired,
+    classes: PropTypes.objectOf(PropTypes.string),
     height: PropTypes.oneOfType([
       PropTypes.string.isRequired,
       PropTypes.number.isRequired
     ]),
-    viewBox: PropTypes.objectOf(PropTypes.number),
-    children: PropTypes.node.isRequired
+    width: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.number.isRequired
+    ]),
+    viewBox: PropTypes.objectOf(PropTypes.number)
   };
 
   static defaultProps = {
-    width: 800,
+    classes: { grid: "" },
     height: 600,
+    width: 800,
     viewBox: {
-      x: -50,
-      y: -50,
+      height: 100,
       width: 100,
-      height: 100
+      x: -50,
+      y: -50
     }
   };
 
   render() {
-    const { width, height, viewBox } = this.props;
+    const { classes, height, viewBox, width } = this.props;
     return (
       <svg
-        className="grid"
-        width={width}
+        className={classNames("grid", classes.grid)}
         height={height}
-        viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
         version="1.1"
+        viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
+        width={width}
         xmlns="http://www.w3.org/2000/svg"
       >
         <ViewBoxProvider value={viewBox}>{this.props.children}</ViewBoxProvider>

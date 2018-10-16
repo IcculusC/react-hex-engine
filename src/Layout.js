@@ -1,38 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
+import Hexagon from "./Hexagon/Hexagon";
 import HexUtils from "./HexUtils";
 import Orientation from "./models/Orientation";
 import Point from "./models/Point";
-import Hexagon from "./Hexagon/Hexagon";
 import { LayoutProvider, withViewBox } from "./Context";
-
-export const LAYOUT_FLAT = new Orientation(
-  3.0 / 2.0,
-  0.0,
-  Math.sqrt(3.0) / 2.0,
-  Math.sqrt(3.0),
-  2.0 / 3.0,
-  0.0,
-  -1.0 / 3.0,
-  Math.sqrt(3.0) / 3.0,
-  0.0
-);
-export const LAYOUT_POINTY = new Orientation(
-  Math.sqrt(3.0),
-  Math.sqrt(3.0) / 2.0,
-  0.0,
-  3.0 / 2.0,
-  Math.sqrt(3.0) / 3.0,
-  -1.0 / 3.0,
-  0.0,
-  2.0 / 3.0,
-  0.5
-);
 
 export class Layout extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
+    classes: PropTypes.objectOf(PropTypes.string),
     flat: PropTypes.bool,
     origin: PropTypes.object,
     size: PropTypes.object,
@@ -40,10 +19,12 @@ export class Layout extends Component {
   };
 
   static defaultProps = {
-    size: new Point(10, 10),
+    className: "",
+    classes: { layout: "" },
     flat: true,
-    spacing: 1.0,
-    origin: new Point(0, 0)
+    origin: new Point(0, 0),
+    size: new Point(10, 10),
+    spacing: 1.0
   };
 
   static getPointOffset(corner, orientation, size) {
@@ -65,8 +46,8 @@ export class Layout extends Component {
     return corners;
   }
 
-  static filterChildren(children, viewBox, layout) {
-    const { x, y, width, height } = viewBox;
+  static filterChildren(children, layout, viewBox) {
+    const { height, width, x, y } = viewBox;
     const cornerCoords = Layout.calculateCoordinates(
       layout.orientation,
       layout.size
@@ -77,22 +58,21 @@ export class Layout extends Component {
       }
       if (
         child.type === Hexagon ||
-        (child.props.q !== undefined &&
-          child.props.r !== undefined &&
-          child.props.s !== undefined)
+        (typeof child.props.q !== "number" &&
+          typeof child.props.r !== "number" &&
+          typeof child.props.s !== "number")
       ) {
         const point = HexUtils.hexToPixel(child.props, layout);
         const corners = cornerCoords.map(
           coord => new Point(coord.x + point.x, coord.y + point.y)
         );
-        const filtered = corners.filter(
+        return corners.filter(
           corner =>
             corner.x > x &&
             corner.x < width + x &&
             corner.y > y &&
             corner.y < +height + y
-        );
-        return filtered.length;
+        ).length;
       }
       return true;
     });
@@ -105,12 +85,12 @@ export class Layout extends Component {
       prevState.childCount !== children.length
     ) {
       const { flat, viewBox, ...rest } = nextProps;
-      const orientation = flat ? LAYOUT_FLAT : LAYOUT_POINTY;
-      const layout = { ...rest, orientation };
+      const orientation = flat ? Orientation.Flat : Orientation.Pointy;
+      const layout = { orientation, ...rest };
 
       return {
         childCount: children.length,
-        inBounds: Layout.filterChildren(children, viewBox, layout),
+        inBounds: Layout.filterChildren(children, layout, viewBox),
         viewBox
       };
     }
@@ -120,16 +100,16 @@ export class Layout extends Component {
   state = { childCount: 0, inBounds: [], viewBox: {} };
 
   render() {
-    const { flat, className, size, viewBox, ...rest } = this.props;
+    const { flat, classes, className, size, viewBox, ...rest } = this.props;
     const { inBounds } = this.state;
-    const orientation = flat ? LAYOUT_FLAT : LAYOUT_POINTY;
+    const orientation = flat ? Orientation.Flat : Orientation.Pointy;
     const points = Layout.calculateCoordinates(orientation, size)
-      .map(point => `${point.x},${point.y}`)
+      .map(point => point.toString())
       .join(" ");
-    const layout = { ...rest, orientation, size };
+    const layout = { orientation, size, ...rest };
     return (
       <LayoutProvider value={{ layout, points }}>
-        <g className={className}>{inBounds}</g>
+        <g className={classNames(className, classes.layout)}>{inBounds}</g>
       </LayoutProvider>
     );
   }

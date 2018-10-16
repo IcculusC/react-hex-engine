@@ -3,6 +3,11 @@ class Point {
     this.x = x;
     this.y = y;
   }
+
+  toString() {
+    const { x, y } = this;
+    return `${x},${y}`;
+  }
 }
 
 export default Point;

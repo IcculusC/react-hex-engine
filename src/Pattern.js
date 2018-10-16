@@ -18,19 +18,19 @@ class Pattern extends Component {
     return (
       <defs>
         <pattern
+          height={size.y}
           id={id}
           patternUnits="objectBoundingBox"
+          width={size.x}
           x={0}
           y={0}
-          width={size.x}
-          height={size.y}
         >
           <image
-            xlinkHref={link}
-            x={0}
-            y={0}
-            width={size.x * 2}
             height={size.y * 2}
+            width={size.x * 2}
+            x={0}
+            xlinkHref={link}
+            y={0}
           />
         </pattern>
       </defs>

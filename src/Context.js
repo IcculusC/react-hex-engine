@@ -1,8 +1,8 @@
 import React from "react";
-import { LAYOUT_FLAT } from "./Layout";
+import Orientation from "./models/Orientation";
 
 export const LayoutContext = React.createContext({
-  layout: LAYOUT_FLAT,
+  layout: Orientation.Flat,
   points: ""
 });
 export const {

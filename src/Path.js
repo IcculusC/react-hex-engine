@@ -5,22 +5,22 @@ import { withExpandedLayout } from "./Context";
 
 class Path extends Component {
   static propTypes = {
-    start: PropTypes.object,
     end: PropTypes.object,
-    layout: PropTypes.object
+    layout: PropTypes.object,
+    start: PropTypes.object
   };
 
   // TODO Refactor
   getPoints() {
-    const { layout, start, end } = this.props;
-    if (!start || !end) {
+    const { end, layout, start } = this.props;
+    if (!end || !start) {
       return "";
     }
 
     // Get all the intersecting hexes between start and end points
-    let distance = HexUtils.distance(start, end);
-    let intersects = [];
-    let step = 1.0 / Math.max(distance, 1);
+    const distance = HexUtils.distance(start, end);
+    const intersects = [];
+    const step = 1.0 / Math.max(distance, 1);
     for (let i = 0; i <= distance; i++) {
       intersects.push(HexUtils.round(HexUtils.hexLerp(start, end, step * i)));
     }

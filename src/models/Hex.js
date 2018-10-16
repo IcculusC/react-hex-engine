@@ -4,6 +4,11 @@ class Hex {
     this.r = r;
     this.s = s;
   }
+
+  toString() {
+    const { q, r, s } = this;
+    return `${q},${r},${s}`;
+  }
 }
 
 export default Hex;

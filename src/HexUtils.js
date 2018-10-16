@@ -12,7 +12,7 @@ class HexUtils {
   ];
 
   static equals(a, b) {
-    return a.q == b.q && a.r == b.r && a.s == b.s;
+    return a.q === b.q && a.r === b.r && a.s === b.s;
   }
 
   static add(a, b) {
@@ -104,7 +104,28 @@ class HexUtils {
   }
 
   static getID(hex) {
+    if (hex instanceof Hex) {
+      return hex.toString();
+    }
+    const { q, r, s } = hex;
+    if (
+      typeof q !== "number" ||
+      typeof r !== "number" ||
+      typeof s !== "number"
+    ) {
+      throw new Error(
+        "HexUtils.getID called with a non Hex-like { q: number, r: number, s: number } argument"
+      );
+    }
     return `${hex.q},${hex.r},${hex.s}`;
+  }
+
+  isHexLike(obj) {
+    return (
+      typeof obj.q === "number" &&
+      typeof obj.r === "number" &&
+      typeof obj.s === "number"
+    );
   }
 }
 
