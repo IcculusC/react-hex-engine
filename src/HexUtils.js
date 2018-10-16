@@ -107,24 +107,7 @@ class HexUtils {
     if (hex instanceof Hex) {
       return hex.toString();
     }
-    const { q, r, s } = hex;
-    if (
-      typeof q !== "number" ||
-      typeof r !== "number" ||
-      typeof s !== "number"
-    ) {
-      throw new Error(
-        "HexUtils.getID called with a non Hex-like { q: number, r: number, s: number } argument"
-      );
-    }
     return `${hex.q},${hex.r},${hex.s}`;
-  }
-
-  isHexLike(obj) {
-    const { q, r, s } = obj;
-    return (
-      typeof q === "number" && typeof r === "number" && typeof s === "number"
-    );
   }
 }
 
