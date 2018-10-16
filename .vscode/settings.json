@@ -1,0 +1,9 @@
+{
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+    "javascript.format.enable": false,
+    "javascript.validate.enable": false,
+    "typescript.format.enable": false,
+    "typescript.validate.enable": false,
+}

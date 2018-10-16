@@ -4,9 +4,8 @@ module.exports = {
   testMatch: ["<rootDir>/test/src/**/*.js"],
   testEnvironment: "node",
   transform: {
-    "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
   },
   transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
-
   moduleFileExtensions: ["js"]
 };
