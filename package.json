@@ -9,7 +9,7 @@
   "scripts": {
     "compile": "babel src/ --out-dir lib",
     "bundle": "babel src/ --out-file dist/react-hexgrid.js",
-    "prepublish": "npm run compile",
+    "prepublish": "npm run test && npm run lint && npm run compile",
     "test": "node ./node_modules/.bin/jest --env=jsdom",
     "test:coverage": "npm run test -- --coverage",
     "lint": "eslint ./src"

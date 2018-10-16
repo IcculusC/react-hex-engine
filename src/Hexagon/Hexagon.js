@@ -30,6 +30,7 @@ class Hexagon extends Component {
   static defaultProps = {
     className: "",
     classes: {
+      group: "",
       hexagon: "",
       highlighted: "",
       hovered: "",
@@ -123,15 +124,11 @@ class Hexagon extends Component {
   }
 
   render() {
-    const { className, classes, highlighted, points, selected } = this.props;
+    const { classes, highlighted, points, selected } = this.props;
     const { hovered, pixel } = this.state;
     return (
       <g
-        className={classNames("hexagon-group", className, {
-          [classes.selected]: selected,
-          [classes.highlighted]: highlighted,
-          [classes.hovered]: hovered
-        })}
+        className={classNames("hexagon-group", classes.group)}
         draggable="true"
         onClick={e => this.onClick(e)}
         onDragEnd={e => this.onDragEnd(e)}
@@ -143,7 +140,13 @@ class Hexagon extends Component {
         onMouseOver={e => this.onMouseOver(e)}
         transform={`translate(${pixel.x}, ${pixel.y})`}
       >
-        <g className={classNames("hexagon", classes.hexagon)}>
+        <g
+          className={classNames("hexagon", classes.hexagon, {
+            [classes.selected]: selected,
+            [classes.highlighted]: highlighted,
+            [classes.hovered]: hovered
+          })}
+        >
           <polygon className={classes.polygon} points={points} />
           {this.props.children}
         </g>
