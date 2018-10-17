@@ -60,7 +60,8 @@ class Hexagon extends Component {
 
   state = {
     hex: {},
-    hovered: false
+    hovered: false,
+    pixel: {}
   };
 
   constructor(props) {
