@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import memoize from "memoize-one";
 import Hexagon from "./Hexagon/Hexagon";
 import HexUtils from "./HexUtils";
 import Orientation from "./models/Orientation";
@@ -46,21 +47,22 @@ export class Layout extends Component {
     return corners;
   }
 
-  static filterChildren(children, layout, viewBox) {
+  filterChildren = memoize((children, layout, viewBox) => {
+    const childrenArray = React.Children.toArray(children);
     const { height, width, x, y } = viewBox;
     const cornerCoords = Layout.calculateCoordinates(
       layout.orientation,
       layout.size
     );
-    return children.filter(child => {
+    return childrenArray.filter(child => {
       if (!child.props) {
         return true;
       }
       if (
         child.type === Hexagon ||
-        (typeof child.props.q !== "number" &&
-          typeof child.props.r !== "number" &&
-          typeof child.props.s !== "number")
+        (child.props.q !== undefined &&
+          child.props.r !== undefined &&
+          child.props.s !== undefined)
       ) {
         const point = HexUtils.hexToPixel(child.props, layout);
         const corners = cornerCoords.map(
@@ -76,37 +78,24 @@ export class Layout extends Component {
       }
       return true;
     });
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const children = React.Children.toArray(nextProps.children);
-    if (
-      prevState.viewBox !== nextProps.viewBox ||
-      prevState.childCount !== children.length
-    ) {
-      const { flat, viewBox, ...rest } = nextProps;
-      const orientation = flat ? Orientation.Flat : Orientation.Pointy;
-      const layout = { orientation, ...rest };
-
-      return {
-        childCount: children.length,
-        inBounds: Layout.filterChildren(children, layout, viewBox),
-        viewBox
-      };
-    }
-    return null;
-  }
-
-  state = { childCount: 0, inBounds: [], viewBox: {} };
+  });
 
   render() {
-    const { flat, classes, className, size, viewBox, ...rest } = this.props;
-    const { inBounds } = this.state;
+    const {
+      flat,
+      children,
+      classes,
+      className,
+      size,
+      viewBox,
+      ...rest
+    } = this.props;
     const orientation = flat ? Orientation.Flat : Orientation.Pointy;
     const points = Layout.calculateCoordinates(orientation, size)
       .map(point => point.toString())
       .join(" ");
     const layout = { orientation, size, ...rest };
+    const inBounds = this.filterChildren(children, layout, viewBox);
     return (
       <LayoutProvider value={{ layout, points }}>
         <g className={classNames(className, classes.layout)}>{inBounds}</g>

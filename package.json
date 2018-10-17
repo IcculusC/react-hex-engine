@@ -1,7 +1,7 @@
 {
   "name": "react-hex-engine",
   "description": "Hexagon Map Editor and Game Engine",
-  "version": "0.1.0",
+  "version": "0.2.0-rc.10",
   "main": "lib/index.js",
   "author": "IcculusC",
   "repository": "IcculusC/react-hex-engine",
@@ -46,7 +46,8 @@
     "react-test-renderer": "^16.5.2"
   },
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "memoize-one": "^4.0.2"
   },
   "files": [
     "lib/**/*"
