@@ -2,8 +2,18 @@ class Hex {
   constructor(q, r, s, meta = {}) {
     this.q = q;
     this.r = r;
-    this.s = s;
-    this.meta = {};
+    if (s !== undefined) {
+      if (typeof s === "number") {
+        this.s = s;
+        this.meta = meta;
+      } else if (typeof s === "object") {
+        this.s = -q - r;
+        this.meta = s;
+      }
+    } else {
+      this.s = -q - r;
+      this.meta = {};
+    }
   }
 
   toString() {
@@ -17,8 +27,8 @@ class Hex {
   }
 
   static fromJSON(obj) {
-    const { meta, q, r, s } = obj;
-    return new Hex(q, r, s, meta);
+    const { meta, q, r } = obj;
+    return new Hex(q, r, meta);
   }
 }
 

@@ -69,8 +69,8 @@ class Hexagon extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.points !== nextProps.points) {
-      const { layout, points, q, r, s } = nextProps;
-      const hex = new Hex(q, r, s);
+      const { layout, points, q, r } = nextProps;
+      const hex = new Hex(q, r);
       const pixel = HexUtils.hexToPixel(hex, nextProps.layout);
       return { hex, pixel, layout, points };
     }
@@ -87,7 +87,7 @@ class Hexagon extends Component {
 
   constructor(props) {
     super(props);
-    const hex = new Hex(props.q, props.r, props.s);
+    const hex = new Hex(props.q, props.r);
     const pixel = HexUtils.hexToPixel(hex, props.layout);
     this.state = {
       ...this.state,

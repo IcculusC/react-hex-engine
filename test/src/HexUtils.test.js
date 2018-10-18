@@ -1,4 +1,6 @@
 import HexUtils from "../../src/HexUtils";
+import Hex from "../../src/models/Hex";
+import Orientation from "../../src/models/Orientation";
 
 const hex1 = { q: 0, r: 0, s: 0 };
 const hex2 = { q: 0, r: -2, s: 2 };
@@ -16,6 +18,250 @@ const layout = {
     b3: Math.sqrt(3.0) / 3.0,
     startAngle: 0.0
   },
+  size: {
+    x: 10,
+    y: 10
+  },
+  origin: {
+    x: 0,
+    y: 0
+  }
+};
+
+const map = {
+  "-2,0,2": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: -2,
+    r: 0,
+    s: 2,
+    tile: "empty"
+  },
+  "-2,1,1": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: true
+    },
+    q: -2,
+    r: 1,
+    s: 1,
+    tile: "empty"
+  },
+  "-2,2,0": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: -2,
+    r: 2,
+    s: 0,
+    tile: "empty"
+  },
+  "-1,-1,2": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: -1,
+    r: -1,
+    s: 2,
+    tile: "empty"
+  },
+  "-1,0,1": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: -1,
+    r: 0,
+    s: 1,
+    tile: "empty"
+  },
+  "-1,1,0": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: -1,
+    r: 1,
+    s: 0,
+    tile: "empty"
+  },
+  "-1,2,-1": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: -1,
+    r: 2,
+    s: -1,
+    tile: "empty"
+  },
+  "0,-2,2": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 0,
+    r: -2,
+    s: 2,
+    tile: "empty"
+  },
+  "0,-1,1": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 0,
+    r: -1,
+    s: 1,
+    tile: "empty"
+  },
+  "0,0,0": {
+    meta: {
+      hoverable: false,
+      replaceable: false,
+      selectable: false,
+      selected: false
+    },
+    q: 0,
+    r: 0,
+    s: 0,
+    tile: "colony"
+  },
+  "0,1,-1": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 0,
+    r: 1,
+    s: -1,
+    tile: "empty"
+  },
+  "0,2,-2": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 0,
+    r: 2,
+    s: -2,
+    tile: "empty"
+  },
+  "1,-2,1": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 1,
+    r: -2,
+    s: 1,
+    tile: "empty"
+  },
+  "1,-1,0": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 1,
+    r: -1,
+    s: 0,
+    tile: "empty"
+  },
+  "1,0,-1": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 1,
+    r: 0,
+    s: -1,
+    tile: "empty"
+  },
+  "1,1,-2": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 1,
+    r: 1,
+    s: -2,
+    tile: "empty"
+  },
+  "2,-2,0": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 2,
+    r: -2,
+    s: 0,
+    tile: "empty"
+  },
+  "2,-1,-1": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 2,
+    r: -1,
+    s: -1,
+    tile: "empty"
+  },
+  "2,0,-2": {
+    meta: {
+      hoverable: true,
+      replaceable: true,
+      selectable: true,
+      selected: false
+    },
+    q: 2,
+    r: 0,
+    s: -2,
+    tile: "empty"
+  }
+};
+
+const checkLayout = {
+  spacing: 1.05,
+  orientation: Orientation.Pointy,
   size: {
     x: 10,
     y: 10

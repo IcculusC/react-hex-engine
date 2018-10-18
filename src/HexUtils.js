@@ -3,12 +3,12 @@ import Point from "./models/Point";
 
 class HexUtils {
   static DIRECTIONS = [
-    new Hex(1, 0, -1),
-    new Hex(1, -1, 0),
-    new Hex(0, -1, 1),
-    new Hex(-1, 0, 1),
-    new Hex(-1, 1, 0),
-    new Hex(0, 1, -1)
+    new Hex(1, 0),
+    new Hex(1, -1),
+    new Hex(0, -1),
+    new Hex(-1, 0),
+    new Hex(-1, 1),
+    new Hex(0, 1)
   ];
 
   static equals(a, b) {
