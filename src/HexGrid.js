@@ -31,7 +31,7 @@ class HexGrid extends Component {
   };
 
   render() {
-    const { classes, height, viewBox, width } = this.props;
+    const { children, classes, height, viewBox, width } = this.props;
     return (
       <svg
         className={classNames("grid", classes.grid)}
@@ -41,7 +41,7 @@ class HexGrid extends Component {
         width={width}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <ViewBoxProvider value={viewBox}>{this.props.children}</ViewBoxProvider>
+        <ViewBoxProvider value={viewBox}>{children}</ViewBoxProvider>
       </svg>
     );
   }

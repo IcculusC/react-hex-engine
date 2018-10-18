@@ -9,6 +9,16 @@ class Hex {
     const { q, r, s } = this;
     return `${q},${r},${s}`;
   }
+
+  toJSON() {
+    const { q, r, s } = this;
+    return { q, r, s };
+  }
+
+  static fromJSON(obj) {
+    const { q, r, s } = obj;
+    return new Hex(q, r, s);
+  }
 }
 
 export default Hex;

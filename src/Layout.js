@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import memoize from "memoize-one";
-import Hexagon from "./Hexagon/Hexagon";
+import Hex from "./models/Hex";
 import HexUtils from "./HexUtils";
 import Orientation from "./models/Orientation";
 import Point from "./models/Point";
@@ -33,48 +33,51 @@ export class Layout extends Component {
     return new Point(size.x * Math.cos(angle), size.y * Math.sin(angle));
   }
 
-  // TODO Refactor
   static calculateCoordinates(orientation, size) {
-    const corners = [];
     const center = new Point(0, 0);
-
-    Array.from(new Array(6), (x, i) => {
+    return [...Array(6).keys()].map((_, i) => {
       const offset = Layout.getPointOffset(i, orientation, size);
-      const point = new Point(center.x + offset.x, center.y + offset.y);
-      return corners.push(point);
+      return new Point(center.x + offset.x, center.y + offset.y);
     });
+  }
 
-    return corners;
+  static filterViewBox(layout, viewBox) {
+    const { height, width, x, y } = viewBox;
+    const x_ = x - layout.size.x + layout.spacing + 1;
+    const y_ = y - layout.size.y + layout.spacing + 1;
+    const width_ = width + layout.size.x + layout.spacing + 1;
+    const height_ = height + layout.size.y + layout.spacing + 1;
+
+    return {
+      x: x_,
+      y: y_,
+      width: width_,
+      height: height_
+    };
   }
 
   filterChildren = memoize((children, layout, viewBox) => {
     const childrenArray = React.Children.toArray(children);
-    const { height, width, x, y } = viewBox;
-    const cornerCoords = Layout.calculateCoordinates(
-      layout.orientation,
-      layout.size
-    );
+    const { x, y, width, height } = Layout.filterViewBox(layout, viewBox);
+
     return childrenArray.filter(child => {
       if (!child.props) {
         return true;
       }
       if (
-        child.type === Hexagon ||
-        (child.props.q !== undefined &&
-          child.props.r !== undefined &&
-          child.props.s !== undefined)
+        child.props !== undefined &&
+        child.props.q !== undefined &&
+        child.props.r !== undefined &&
+        child.props.s !== undefined
       ) {
-        const point = HexUtils.hexToPixel(child.props, layout);
-        const corners = cornerCoords.map(
-          coord => new Point(coord.x + point.x, coord.y + point.y)
+        const { q, r, s } = child.props;
+        const point = HexUtils.hexToPixel(new Hex(q, r, s), layout);
+        return (
+          point.x > x &&
+          point.x < width + x &&
+          point.y > y &&
+          point.y < height + y
         );
-        return corners.filter(
-          corner =>
-            corner.x > x &&
-            corner.x < width + x &&
-            corner.y > y &&
-            corner.y < +height + y
-        ).length;
       }
       return true;
     });

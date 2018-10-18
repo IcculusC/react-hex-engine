@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Hex from "../models/Hex";
-import HexUtils from "../HexUtils";
-import Point from "../models/Point";
-import { withExpandedLayout } from "../Context";
+import Hex from "./models/Hex";
+import HexUtils from "./HexUtils";
+import Point from "./models/Point";
+import Text from "./Text";
+import { withExpandedLayout } from "./Context";
 
 class Hexagon extends Component {
   static propTypes = {
@@ -26,7 +27,9 @@ class Hexagon extends Component {
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
     selected: PropTypes.bool,
-    showCoordinates: PropTypes.bool
+    showCoordinates: PropTypes.bool,
+    text: PropTypes.string,
+    TextProps: PropTypes.objectOf(PropTypes.any)
   };
 
   static defaultProps = {
@@ -40,9 +43,12 @@ class Hexagon extends Component {
       q: "",
       r: "",
       s: "",
-      selected: ""
+      selected: "",
+      text: ""
     },
-    showCoordinates: false
+    showCoordinates: false,
+    text: "",
+    TextProps: {}
   };
 
   static getCoordinateTextOffset(
@@ -58,10 +64,22 @@ class Hexagon extends Component {
     );
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.points !== nextProps.points) {
+      const { layout, points, q, r, s } = nextProps;
+      const hex = new Hex(q, r, s);
+      const pixel = HexUtils.hexToPixel(hex, nextProps.layout);
+      return { hex, pixel, layout, points };
+    }
+    return null;
+  }
+
   state = {
     hex: {},
     hovered: false,
-    pixel: {}
+    layout: {},
+    pixel: {},
+    points: ""
   };
 
   constructor(props) {
@@ -145,9 +163,11 @@ class Hexagon extends Component {
       r,
       s,
       selected,
-      showCoordinates
+      showCoordinates,
+      text,
+      TextProps
     } = this.props;
-    const { hex, hovered, pixel } = this.state;
+    const { hovered, pixel } = this.state;
     let qPixel, rPixel, sPixel;
     if (showCoordinates) {
       qPixel = Hexagon.getCoordinateTextOffset(3, layout, {
@@ -186,7 +206,12 @@ class Hexagon extends Component {
         >
           <polygon className={classes.polygon} points={points} />
           {this.props.children}
-          {showCoordinates && (
+          {text ? (
+            <Text className={classes.text} {...TextProps}>
+              {text}
+            </Text>
+          ) : null}
+          {showCoordinates ? (
             <React.Fragment>
               <text
                 {...qPixel}
@@ -213,7 +238,7 @@ class Hexagon extends Component {
                 {s}
               </text>
             </React.Fragment>
-          )}
+          ) : null}
         </g>
       </g>
     );
