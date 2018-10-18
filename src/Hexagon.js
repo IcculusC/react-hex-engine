@@ -12,6 +12,7 @@ class Hexagon extends Component {
     children: PropTypes.node,
     classes: PropTypes.objectOf(PropTypes.any),
     data: PropTypes.object,
+    hoverable: PropTypes.bool,
     highlighted: PropTypes.bool,
     layout: PropTypes.objectOf(PropTypes.any).isRequired,
     onClick: PropTypes.func,
@@ -26,6 +27,7 @@ class Hexagon extends Component {
     q: PropTypes.number.isRequired,
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
+    selectable: PropTypes.bool,
     selected: PropTypes.bool,
     showCoordinates: PropTypes.bool,
     text: PropTypes.string,
@@ -33,7 +35,6 @@ class Hexagon extends Component {
   };
 
   static defaultProps = {
-    className: "",
     classes: {
       group: "",
       hexagon: "",
@@ -46,6 +47,8 @@ class Hexagon extends Component {
       selected: "",
       text: ""
     },
+    hoverable: true,
+    selectable: true,
     showCoordinates: false,
     text: "",
     TextProps: {}
@@ -157,11 +160,13 @@ class Hexagon extends Component {
     const {
       classes,
       highlighted,
+      hoverable,
       layout,
       points,
       q,
       r,
       s,
+      selectable,
       selected,
       showCoordinates,
       text,
@@ -199,15 +204,15 @@ class Hexagon extends Component {
       >
         <g
           className={classNames("hexagon", classes.hexagon, {
-            [classes.selected]: selected,
+            [classes.selected]: selectable && selected,
             [classes.highlighted]: highlighted,
-            [classes.hovered]: hovered
+            [classes.hovered]: hoverable && hovered
           })}
         >
           <polygon className={classes.polygon} points={points} />
           {this.props.children}
           {text ? (
-            <Text className={classes.text} {...TextProps}>
+            <Text classes={{ text: classes.text }} {...TextProps}>
               {text}
             </Text>
           ) : null}

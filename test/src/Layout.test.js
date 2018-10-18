@@ -8,7 +8,7 @@ import GridGenerator from "../../src/GridGenerator";
 test("Layout should render correctly with default props", () => {
   const tree = renderer
     .create(
-      <Layout className={"test1"}>
+      <Layout classes={{ layout: "test1" }}>
         <div>child</div>
       </Layout>
     )
@@ -20,7 +20,7 @@ test("Layout should render correctly with custom props", () => {
   const tree = renderer
     .create(
       <Layout
-        className={"test2"}
+        classes={{ layout: "test2" }}
         flat={false}
         origin={{ x: 2, y: 4 }}
         size={{ x: 12, y: 14 }}
@@ -38,7 +38,7 @@ test("Layout should only render hexagons in bounds", () => {
     .create(
       <Layout
         viewBox={{ x: -50, y: -50, width: 100, height: 100 }}
-        className={"test2"}
+        classes={{ layout: "test2" }}
         flat={false}
         origin={{ x: 0, y: 0 }}
         size={{ x: 12, y: 14 }}
@@ -57,7 +57,7 @@ test("Layout should only render hexagons in bounds again", () => {
     .create(
       <Layout
         viewBox={{ x: -50, y: -50, width: 100, height: 100 }}
-        className={"test2"}
+        classes={{ layout: "test2" }}
         flat={false}
         origin={{ x: 0, y: 0 }}
         size={{ x: 12, y: 14 }}
@@ -79,7 +79,7 @@ test("Layout should only render hexagons in bounds one more time", () => {
     .create(
       <Layout
         viewBox={{ x: -50, y: 50, width: 100, height: 100 }}
-        className={"test2"}
+        classes={{ layout: "test2" }}
         flat={false}
         origin={{ x: 0, y: 0 }}
         size={{ x: 12, y: 14 }}

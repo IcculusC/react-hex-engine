@@ -9,7 +9,7 @@ test("Hexagon should render correctly with default props", () => {
   const tree = renderer
     .create(
       <Layout
-        className={"test1"}
+        classes={{ layout: "test1" }}
         size={{ x: 6, y: 6 }}
         flat={false}
         spacing={1.1}
@@ -28,7 +28,7 @@ test("Hexagon should render correctly with text", () => {
   const tree = renderer
     .create(
       <Layout
-        className={"test1"}
+        classes={{ layout: "test1" }}
         size={{ x: 6, y: 6 }}
         flat={false}
         spacing={1.1}
@@ -45,7 +45,7 @@ test("Hexagon should work", () => {
   let playDoh;
   const wrapper = mount(
     <Layout
-      className={"layout"}
+      classes={{ layout: "layout" }}
       size={{ x: 6, y: 6 }}
       flat={false}
       spacing={1.1}
@@ -124,7 +124,7 @@ test("Hexagon should work", () => {
   let playDoh;
   const wrapper2 = mount(
     <Layout
-      className={"layout"}
+      classes={{ layout: "layout" }}
       size={{ x: 6, y: 6 }}
       flat={false}
       spacing={1.1}

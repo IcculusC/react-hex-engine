@@ -1,8 +1,9 @@
 class Hex {
-  constructor(q, r, s) {
+  constructor(q, r, s, meta = {}) {
     this.q = q;
     this.r = r;
     this.s = s;
+    this.meta = {};
   }
 
   toString() {
@@ -11,13 +12,13 @@ class Hex {
   }
 
   toJSON() {
-    const { q, r, s } = this;
-    return { q, r, s };
+    const { meta, q, r, s } = this;
+    return { meta, q, r, s };
   }
 
   static fromJSON(obj) {
-    const { q, r, s } = obj;
-    return new Hex(q, r, s);
+    const { meta, q, r, s } = obj;
+    return new Hex(q, r, s, meta);
   }
 }
 

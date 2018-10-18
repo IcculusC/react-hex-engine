@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
 import memoize from "memoize-one";
 import Hex from "./models/Hex";
 import HexUtils from "./HexUtils";
@@ -11,7 +10,6 @@ import { LayoutProvider, withViewBox } from "./Context";
 export class Layout extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    className: PropTypes.string,
     classes: PropTypes.objectOf(PropTypes.string),
     flat: PropTypes.bool,
     origin: PropTypes.object,
@@ -84,15 +82,7 @@ export class Layout extends Component {
   });
 
   render() {
-    const {
-      flat,
-      children,
-      classes,
-      className,
-      size,
-      viewBox,
-      ...rest
-    } = this.props;
+    const { flat, children, classes, size, viewBox, ...rest } = this.props;
     const orientation = flat ? Orientation.Flat : Orientation.Pointy;
     const points = Layout.calculateCoordinates(orientation, size)
       .map(point => point.toString())
@@ -101,7 +91,7 @@ export class Layout extends Component {
     const inBounds = this.filterChildren(children, layout, viewBox);
     return (
       <LayoutProvider value={{ layout, points }}>
-        <g className={classNames(className, classes.layout)}>{inBounds}</g>
+        <g className={classes.layout}>{inBounds}</g>
       </LayoutProvider>
     );
   }
