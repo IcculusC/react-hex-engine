@@ -16,6 +16,11 @@ class Hex {
     }
   }
 
+  setMeta(update = {}) {
+    this.meta = { ...this.meta, ...this.updates };
+    return this;
+  }
+
   toString() {
     const { q, r, s } = this;
     return `${q},${r},${s}`;
