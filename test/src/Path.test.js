@@ -1,13 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import Layout from "../../src/Layout";
+import HexEngine from "../../src/HexEngine";
 import Path from "../../src/Path";
 
 test("Path should render correctly", () => {
   const tree = renderer
     .create(
-      <Layout
+      <HexEngine
         classes={{ layout: "test1" }}
         size={{ x: 6, y: 6 }}
         flat={false}
@@ -15,7 +15,7 @@ test("Path should render correctly", () => {
         origin={{ x: 0, y: 0 }}
       >
         <Path start={{ q: 1, r: 1, s: -1 }} end={{ q: 0, r: 0, s: 0 }} />
-      </Layout>
+      </HexEngine>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();
@@ -24,7 +24,7 @@ test("Path should render correctly", () => {
 test("Path should render correctly without an end hex", () => {
   const tree = renderer
     .create(
-      <Layout
+      <HexEngine
         classes={{ layout: "test2" }}
         size={{ x: 6, y: 6 }}
         flat={false}
@@ -32,7 +32,7 @@ test("Path should render correctly without an end hex", () => {
         origin={{ x: 0, y: 0 }}
       >
         <Path start={{ q: 1, r: 1, s: -1 }} />
-      </Layout>
+      </HexEngine>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

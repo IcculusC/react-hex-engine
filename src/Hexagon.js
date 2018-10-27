@@ -5,7 +5,7 @@ import Hex from "./models/Hex";
 import HexUtils from "./HexUtils";
 import Point from "./models/Point";
 import Text from "./Text";
-import { withExpandedLayout } from "./Context";
+import { withHexEngine } from "./Context";
 
 class Hexagon extends Component {
   static propTypes = {
@@ -250,4 +250,4 @@ class Hexagon extends Component {
   }
 }
 
-export default withExpandedLayout(Hexagon);
+export default withHexEngine(Hexagon);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import HexUtils from "./HexUtils";
-import { withExpandedLayout } from "./Context";
+import { withHexEngine } from "./Context";
 
 class Path extends Component {
   static propTypes = {
@@ -42,4 +42,4 @@ class Path extends Component {
   }
 }
 
-export default withExpandedLayout(Path);
+export default withHexEngine(Path);

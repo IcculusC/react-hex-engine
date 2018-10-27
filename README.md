@@ -13,3 +13,6 @@ Quote from the original readme
 > With inspiration from
 [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
 
+# Documentation
+
+Documentation forthcoming alongside stable APIs.

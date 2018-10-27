@@ -2,13 +2,13 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
-import Layout from "../../src/Layout";
+import HexEngine from "../../src/HexEngine";
 import Hexagon from "../../src/Hexagon";
 
 test("Hexagon should render correctly with default props", () => {
   const tree = renderer
     .create(
-      <Layout
+      <HexEngine
         classes={{ layout: "test1" }}
         size={{ x: 6, y: 6 }}
         flat={false}
@@ -18,7 +18,7 @@ test("Hexagon should render correctly with default props", () => {
         <Hexagon q={0} r={0} s={0}>
           <div>child</div>
         </Hexagon>
-      </Layout>
+      </HexEngine>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();
@@ -27,7 +27,7 @@ test("Hexagon should render correctly with default props", () => {
 test("Hexagon should render correctly with text", () => {
   const tree = renderer
     .create(
-      <Layout
+      <HexEngine
         classes={{ layout: "test1" }}
         size={{ x: 6, y: 6 }}
         flat={false}
@@ -35,7 +35,7 @@ test("Hexagon should render correctly with text", () => {
         origin={{ x: 0, y: 0 }}
       >
         <Hexagon q={0} r={0} s={0} text="test" />
-      </Layout>
+      </HexEngine>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();
@@ -44,7 +44,7 @@ test("Hexagon should render correctly with text", () => {
 test("Hexagon should work", () => {
   let playDoh;
   const wrapper = mount(
-    <Layout
+    <HexEngine
       classes={{ layout: "layout" }}
       size={{ x: 6, y: 6 }}
       flat={false}
@@ -85,7 +85,7 @@ test("Hexagon should work", () => {
       >
         <div>child</div>
       </Hexagon>
-    </Layout>
+    </HexEngine>
   );
   expect(wrapper.find("g.test1").length).toBe(1);
 
@@ -123,7 +123,7 @@ test("Hexagon should work", () => {
 test("Hexagon should work", () => {
   let playDoh;
   const wrapper2 = mount(
-    <Layout
+    <HexEngine
       classes={{ layout: "layout" }}
       size={{ x: 6, y: 6 }}
       flat={false}
@@ -133,7 +133,7 @@ test("Hexagon should work", () => {
       <Hexagon q={0} r={0} s={0} classes={{ group: "test2" }}>
         <div>child</div>
       </Hexagon>
-    </Layout>
+    </HexEngine>
   );
   expect(wrapper2.find("g.test2").length).toBe(1);
 
