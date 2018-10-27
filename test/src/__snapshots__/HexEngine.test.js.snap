@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Hexagon should render correctly with default props 1`] = `
+exports[`HexEngine HexEngine should render correctly with default props 1`] = `
 <svg
   className="grid"
   height={480}
@@ -30,18 +30,15 @@ exports[`Hexagon should render correctly with default props 1`] = `
       >
         <polygon
           className=""
-          points="5.196152422706632,2.9999999999999996 3.6739403974420594e-16,6 -5.196152422706632,2.9999999999999996 -5.196152422706633,-2.9999999999999982 -1.102182119232618e-15,-6 5.19615242270663,-3.0000000000000027"
+          points="10,0 5.000000000000001,8.660254037844386 -4.999999999999998,8.660254037844387 -10,1.2246467991473533e-15 -5.000000000000004,-8.660254037844386 5.000000000000001,-8.660254037844386"
         />
-        <div>
-          child
-        </div>
       </g>
     </g>
   </g>
 </svg>
 `;
 
-exports[`Hexagon should render correctly with text 1`] = `
+exports[`HexEngine HexEngine should render correctly with pointy orientation 1`] = `
 <svg
   className="grid"
   height={480}
@@ -71,16 +68,8 @@ exports[`Hexagon should render correctly with text 1`] = `
       >
         <polygon
           className=""
-          points="5.196152422706632,2.9999999999999996 3.6739403974420594e-16,6 -5.196152422706632,2.9999999999999996 -5.196152422706633,-2.9999999999999982 -1.102182119232618e-15,-6 5.19615242270663,-3.0000000000000027"
+          points="8.660254037844387,4.999999999999999 6.123233995736766e-16,10 -8.660254037844387,4.999999999999999 -8.660254037844389,-4.999999999999997 -1.8369701987210296e-15,-10 8.660254037844384,-5.000000000000004"
         />
-        <text
-          className=""
-          textAnchor="middle"
-          x={0}
-          y="0.3em"
-        >
-          test
-        </text>
       </g>
     </g>
   </g>
