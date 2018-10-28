@@ -1,8 +1,13 @@
-[![Storybook](https://github.com/storybooks/press/blob/master/badges/storybook.svg)](https://icculusc.github.io/react-hex-engine)
-[![CircleCI](https://circleci.com/gh/IcculusC/react-hex-engine/tree/master.svg?style=shield)](https://circleci.com/gh/IcculusC/react-hex-engine/tree/master)
-
+[![GitHub release](https://img.shields.io/github/release/icculusc/react-hex-engine.svg)](https://github.com/IcculusC/react-hex-engine/releases/latest)
+[![CircleCI branch](https://img.shields.io/circleci/project/github/IcculusC/react-hex-engine/master.svg)](https://github.com/IcculusC/react-hex-engine/tree/master)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/icculusc/react-hex-engine.svg)](https://github.com/IcculusC/react-hex-engine/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/icculusc/react-hex-engine.svg)](https://github.com/IcculusC/react-hex-engine/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/icculusc/react-hex-engine.svg)](https://github.com/IcculusC/react-hex-engine/commits)
+[![Docs status](https://img.shields.io/badge/docs-in_progress-orange.svg)](https://icculusc.github.io/react-hex-engine/)
 
 # react-hex-engine
+
+Check out the [storybook](https://icculusc.github.io/react-hex-engine) for the existing documentation.  Improvements to the docs are in the pipeline!
 
 Originally forked from [https://github.com/Hellenic/react-hexgrid](https://github.com/Hellenic/react-hexgrid)
 

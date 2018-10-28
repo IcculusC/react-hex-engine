@@ -2,8 +2,7 @@ import * as storybook from "@storybook/react";
 import { setOptions } from "@storybook/addon-options";
 
 setOptions({
-  name: "react-hex-engine",
-  addonPanelInRight: true
+  name: "react-hex-engine"
 });
 
 function loadStories() {
