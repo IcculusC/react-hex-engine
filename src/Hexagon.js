@@ -11,11 +11,10 @@ class Hexagon extends Component {
   static propTypes = {
     children: PropTypes.node,
     classes: PropTypes.objectOf(PropTypes.any),
-    /** Data for drag and drop API to transfer around */
     data: PropTypes.object,
     hoverable: PropTypes.bool,
+    /** Provides a means to highlight a tile without selecting it, styleable with the `highlighted` class */
     highlighted: PropTypes.bool,
-    /** Layout for various, provided by HexEngineContext */
     layout: PropTypes.objectOf(PropTypes.any).isRequired,
     onClick: PropTypes.func,
     onDragEnd: PropTypes.func,
@@ -25,14 +24,16 @@ class Hexagon extends Component {
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
-    /** Point string for polygon, provided by HexEngineContext */
     points: PropTypes.string.isRequired,
     q: PropTypes.number.isRequired,
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
+    /** Disable the `selected` prop, rather redundant */
     selectable: PropTypes.bool,
     selected: PropTypes.bool,
+    /** Show the `q`, `r`, `s` coordinates of the hexagon, styleable with the `q`, `r`, and `s` classes */
     showCoordinates: PropTypes.bool,
+    /** Show text in the hexagon, styleable with the `text` class */
     text: PropTypes.string,
     TextProps: PropTypes.objectOf(PropTypes.any)
   };
