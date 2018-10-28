@@ -10,6 +10,8 @@
     "compile": "babel src/ --out-dir lib",
     "bundle": "babel src/ --out-file dist/react-hexgrid.js",
     "prepublish": "npm run test && npm run lint && npm run compile",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook:build": "build-storybook -c .storybook -o docs",
     "test": "node ./node_modules/.bin/jest --env=jsdom",
     "test:coverage": "npm run test -- --coverage",
     "lint": "eslint ./src"
@@ -25,9 +27,12 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.1.2",
+    "@storybook/react": "^4.0.0-rc.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.7.0",
@@ -40,20 +45,19 @@
     "eslint-plugin-react": "^7.11.1",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
+    "jest-html-reporter": "^2.4.2",
     "prettier": "^1.14.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-test-renderer": "^16.5.2"
+    "react-test-renderer": "^16.5.2",
+    "style-loader": "^0.23.1"
   },
   "dependencies": {
+    "@storybook/addon-storysource": "^4.0.0-rc.6",
     "classnames": "^2.2.5",
-    "flatbush": "^3.1.0",
     "memoize-one": "^4.0.2"
   },
   "files": [
     "lib/**/*"
-  ],
-  "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>test/setupTests.js"
-  }
+  ]
 }

@@ -39,3 +39,5 @@ dist/
 nbproject
 .idea
 .node_history
+
+.cache
