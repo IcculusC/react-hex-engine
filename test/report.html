@@ -3,11 +3,10 @@
 	font-size: 1rem;
 	margin: 0;
 	padding: 0;
-	color: #fff;
-	background-color: #2d2d2d
+	color: #333;
 }
 body {
-	padding: 3rem;
+	padding: 1rem;
 	font-size: 0.85rem;
 }
 header {
@@ -15,47 +14,33 @@ header {
 	align-items: center;
 }
 #title {
-	font-weight: 100;
-	font-size: 2rem;
 	margin: 0;
 	flex-grow: 1;
 }
 #logo {
 	height: 4rem;
 }
-#metadata-container {
-	display: flex;
-	padding-bottom: 1rem;
-	padding-top: 2rem;
-	margin-bottom: 1rem;
-	font-size: 1rem;
-}
 #timestamp {
 	font-weight: bold;
-	color: #ccc;
+	color: #666;
 	margin-bottom: 0.5rem;
-	order: 1;
-	flex-grow: 1;
-	text-align: right;
 }
 #summary {
-	color: #ccc;
+	color: #999;
 	margin-bottom: 1rem;
-	order: 0;
-	flex-grow: 2;
 }
 .suite-info {
-	padding: 1rem 0;
-	color: #fff;
+	padding: 1rem;
+	background-color: #eee;
+	border-bottom: 2px solid #999;
+	color: #999;
 	display: flex;
 	align-items: center;
-	font-size: 1rem;
-	margin-bottom: 0.5rem;
 }
 .suite-info .suite-path {
+	font-weight: bold;
 	word-break: break-all;
 	flex-grow: 1;
-	font-weight: bold;
 }
 .suite-info .suite-time {
 	margin-left: 0.5rem;
@@ -69,33 +54,26 @@ header {
 .suite-table {
 	width: 100%;
 	font-size: 0.85rem;
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 }
-/** PASSED */
-.suite-table tr.passed {
-	color: #2ab156;
-}
-.suite-table tr.passed td.suite {
-	border-left: 0.5rem solid #2ab156;
-}
-/** PENDING */
-.suite-table tr.pending {
-	color: #efc52e;
-}
-.suite-table tr.pending td.suite {
-	border-left: 0.5rem solid #efc52e;
-}
-/** FAILED */
-.suite-table tr.failed {
-	color: #e6636b;
-}
-.suite-table tr.failed td.suite {
-	border-left: 0.5rem solid #e6636b;
-}
-
 .suite-table td {
-	padding: 1rem;
+	padding: 0.5rem;
+}
+.suite-table tr.passed {
+	background-color: #DFF2BF;
+	color: #4F8A10;
+}
+.suite-table tr.pending {
+	background-color: #FEEFB3;
+	color: #9F6000;
+}
+.suite-table tr.failed {
+	background-color: #FFBABA;
+	color: #D8000C;
+}
+.suite-table td {
 	font-size: 0.85rem;
+	border-bottom: 1px solid #aaa;
 	vertical-align: top;
 }
 .suite-table td.suite {
@@ -106,12 +84,8 @@ header {
 	font-style: italic;
 	width: 60%;
 }
-/** FAILURE MESSAGES */
 .suite-table td.test .failureMsg {
 	font-size: 1rem;
-	font-size: 1rem;
-	border-top: 0.2rem solid #e6636b;
-	padding-top: 1rem;
 	white-space: pre-wrap;
 	white-space: -moz-pre-wrap;
 	white-space: -pre-wrap;
@@ -127,8 +101,7 @@ header {
 .suite-consolelog {
 	margin-bottom: 2rem;
 	padding: 1rem;
-	border-left: 0.5rem solid #999;
-	color: #999;
+	background-color: #efefef;
 }
 .suite-consolelog-header {
 	font-weight: bold;
@@ -140,14 +113,15 @@ header {
 	margin: 0;
 }
 .suite-consolelog-item-origin {
-	color: #555;
+	color: #777;
 	font-weight: bold;
 }
 .suite-consolelog-item-message {
+	color: #000;
 	font-size: 1rem;
 	padding: 0 0.5rem;
 }
-</style></head><header><h1 id="title">React Hex Engine</h1></header><div id="metadata-container"><div id="timestamp">Start: 2018-10-20 22:40:43</div><div id="summary">
+</style></head><header><h1 id="title">React Hex Engine</h1></header><div id="metadata-container"><div id="timestamp">Start: 2018-10-27 21:09:19</div><div id="summary">
 				0 tests --
 				0 passed /
 				0 failed /

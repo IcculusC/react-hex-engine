@@ -1,0 +1,36 @@
+.hexagon.hovered {
+    fill: #ff0;
+}
+
+.hexagon.hovered > polygon {
+    stroke: black;
+    stroke-width: 0.5;
+}
+
+.hexagon.selected {
+    fill: #a00;
+}
+
+.hexagon.selected > polygon {
+    stroke: blue;
+    stroke-width: 1;
+}
+
+.hexagon.selected.hovered {
+    fill: #fff;
+}
+
+.hexagon.selected.hovered > polygon {
+    stroke: green;
+    stroke-width: 2;
+}
+
+.hexagon.showCoordinates > text {
+    fill: #fff;
+}
+
+.hexagon.withText > text {
+    fill: #fff;
+    font-size: 3px;
+    font-family: sans-serif;
+}

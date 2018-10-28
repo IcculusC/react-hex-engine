@@ -7,5 +7,15 @@ module.exports = {
     "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
   },
   transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
-  moduleFileExtensions: ["js"]
+  moduleFileExtensions: ["js"],
+  reporters: [
+    "default",
+    [
+      "./node_modules/jest-html-reporter",
+      {
+        outputPath: "./test/report.html",
+        pageTitle: "React Hex Engine"
+      }
+    ]
+  ]
 };
