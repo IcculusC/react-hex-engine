@@ -1,19 +1,25 @@
+.hexagon {
+    transition: fill 0.2s;
+}
+
 .hexagon.hovered {
-    fill: #ff0;
+    fill: #aa0;
+    transition: fill 0.2s;
 }
 
 .hexagon.hovered > polygon {
-    stroke: black;
-    stroke-width: 0.5;
+    stroke: #a00;
+    stroke-width: 0.1;
 }
 
 .hexagon.selected {
-    fill: #a00;
+    fill: #ff0;
+    transition: fill 0.5s;
 }
 
 .hexagon.selected > polygon {
-    stroke: blue;
-    stroke-width: 1;
+    stroke: #a00;
+    stroke-width: 0.1;
 }
 
 .hexagon.selected.hovered {
@@ -21,15 +27,21 @@
 }
 
 .hexagon.selected.hovered > polygon {
-    stroke: green;
-    stroke-width: 2;
+    stroke: #a00;
+    stroke-width: 0.1;
 }
 
-.hexagon.showCoordinates > text {
+.hexagon.highlighted {
+    fill: blue;
+}
+
+.hexagon.showCoordinates > text.axis {
     fill: #fff;
+    font-size: 2px;
+    font-family: sans-serif;
 }
 
-.hexagon.withText > text {
+.hexagon.text > text.text {
     fill: #fff;
     font-size: 3px;
     font-family: sans-serif;

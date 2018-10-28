@@ -1,4 +1,10 @@
-import { configure } from "@storybook/react";
+import * as storybook from "@storybook/react";
+import { setOptions } from "@storybook/addon-options";
+
+setOptions({
+  name: "react-hex-engine",
+  addonPanelInRight: true
+});
 
 function loadStories() {
   require("../stories/HexEngine.js");
@@ -6,4 +12,4 @@ function loadStories() {
   // You can require as many stories as you need.
 }
 
-configure(loadStories, module);
+storybook.configure(loadStories, module);

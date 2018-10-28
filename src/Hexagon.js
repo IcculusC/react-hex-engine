@@ -11,9 +11,11 @@ class Hexagon extends Component {
   static propTypes = {
     children: PropTypes.node,
     classes: PropTypes.objectOf(PropTypes.any),
+    /** Data for drag and drop API to transfer around */
     data: PropTypes.object,
     hoverable: PropTypes.bool,
     highlighted: PropTypes.bool,
+    /** Layout for various, provided by HexEngineContext */
     layout: PropTypes.objectOf(PropTypes.any).isRequired,
     onClick: PropTypes.func,
     onDragEnd: PropTypes.func,
@@ -23,6 +25,7 @@ class Hexagon extends Component {
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
+    /** Point string for polygon, provided by HexEngineContext */
     points: PropTypes.string.isRequired,
     q: PropTypes.number.isRequired,
     r: PropTypes.number.isRequired,
@@ -47,8 +50,11 @@ class Hexagon extends Component {
       selected: "",
       text: ""
     },
+    data: {},
+    highlighted: false,
     hoverable: true,
     selectable: true,
+    selected: false,
     showCoordinates: false,
     text: "",
     TextProps: {}
@@ -250,4 +256,5 @@ class Hexagon extends Component {
   }
 }
 
-export default withHexEngine(Hexagon);
+export const Hexagon_ = Hexagon;
+export default withHexEngine(Hexagon_);
