@@ -1,3 +1,7 @@
+[![Storybook](https://github.com/storybooks/press/blob/master/badges/storybook.svg)](https://icculusc.github.io/react-hex-engine)
+[![CircleCI](https://circleci.com/gh/IcculusC/react-hex-engine/tree/master.svg?style=shield)](https://circleci.com/gh/IcculusC/react-hex-engine/tree/master)
+
+
 # react-hex-engine
 
 Originally forked from [https://github.com/Hellenic/react-hexgrid](https://github.com/Hellenic/react-hexgrid)
