@@ -9,25 +9,43 @@ class HexEngine extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     classes: PropTypes.objectOf(PropTypes.string),
+    /** Determines if the hexagons are oriented with a point or an edge facing up */
     flat: PropTypes.bool,
+    /** CSS string or number */
     height: PropTypes.oneOfType([
       PropTypes.string.isRequired,
       PropTypes.number.isRequired
     ]),
+    /** Origin of the grid */
     origin: PropTypes.oneOfType([
       PropTypes.instanceOf(Point),
-      PropTypes.shape({ x: PropTypes.number, y: PropTypes.number })
+      PropTypes.shape({
+        x: PropTypes.number.isRequired,
+        y: PropTypes.number.isRequired
+      })
     ]),
+    /** Size of the hexagons in each dimension */
     size: PropTypes.oneOfType([
       PropTypes.instanceOf(Point),
-      PropTypes.shape({ x: PropTypes.number, y: PropTypes.number })
+      PropTypes.shape({
+        x: PropTypes.number.isRequired,
+        y: PropTypes.number.isRequired
+      })
     ]),
+    /** Space between hexagons */
     spacing: PropTypes.number,
+    /** CSS string or number */
     width: PropTypes.oneOfType([
       PropTypes.string.isRequired,
       PropTypes.number.isRequired
     ]),
-    viewBox: PropTypes.objectOf(PropTypes.number)
+    /** The viewBox {x,y,width,height} of the svg view area */
+    viewBox: PropTypes.shape({
+      height: PropTypes.number.isRequired,
+      width: PropTypes.number.isRequired,
+      x: PropTypes.number.isRequired,
+      y: PropTypes.number.isRequired
+    })
   };
 
   static defaultProps = {
@@ -65,20 +83,22 @@ class HexEngine extends Component {
       classes,
       flat,
       height,
+      origin,
       size,
+      spacing,
       viewBox,
-      width,
-      ...rest
+      width
     } = this.props;
 
     const orientation = flat ? Orientation.Flat : Orientation.Pointy;
     const points = HexEngine.calculateCoordinates(orientation, size)
       .map(point => point.toString())
       .join(" ");
-    const layout = { orientation, size, ...rest };
+    const layout = { orientation, origin, size, spacing };
 
     return (
       <svg
+        key={JSON.stringify(layout)}
         className={classNames("grid", classes.grid)}
         height={height}
         version="1.1"
