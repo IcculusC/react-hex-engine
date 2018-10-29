@@ -100,24 +100,6 @@ test("Hexagon should work", () => {
 
   wrapper.find("g.test1").simulate("click");
   expect(playDoh).toBe("click");
-
-  wrapper
-    .find("g.test1")
-    .simulate("dragStart", { dataTransfer: { setData: () => {} } });
-  expect(playDoh).toBe("dragStart");
-
-  wrapper
-    .find("g.test1")
-    .simulate("dragEnd", { dataTransfer: { setData: () => {} } });
-  expect(playDoh).toBe("dragEnd");
-
-  wrapper.find("g.test1").simulate("dragOver");
-  expect(playDoh).toBe("dragOver");
-
-  wrapper.find("g.test1").simulate("drop", {
-    dataTransfer: { getData: data => JSON.stringify({ data }) }
-  });
-  expect(playDoh).toBe("drop");
 });
 
 test("Hexagon should work", () => {
@@ -147,17 +129,5 @@ test("Hexagon should work", () => {
   expect(playDoh).toBe(undefined);
 
   wrapper2.find("g.test2").simulate("click");
-  expect(playDoh).toBe(undefined);
-
-  wrapper2.find("g.test2").simulate("dragStart");
-  expect(playDoh).toBe(undefined);
-
-  wrapper2.find("g.test2").simulate("dragEnd");
-  expect(playDoh).toBe(undefined);
-
-  wrapper2.find("g.test2").simulate("dragOver");
-  expect(playDoh).toBe(undefined);
-
-  wrapper2.find("g.test2").simulate("drop");
   expect(playDoh).toBe(undefined);
 });

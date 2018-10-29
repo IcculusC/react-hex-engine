@@ -1,7 +1,7 @@
 {
   "name": "react-hex-engine",
   "description": "Hexagon Map Editor and Game Engine",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "lib/index.js",
   "author": "IcculusC",
   "repository": "IcculusC/react-hex-engine",
@@ -29,6 +29,7 @@
     "@babel/runtime": "^7.1.2",
     "@storybook/addon-centered": "^3.4.11",
     "@storybook/addon-knobs": "^4.0.0-rc.6",
+    "@storybook/addon-info": "^4.0.0-rc.6",
     "@storybook/addon-notes": "^4.0.0-rc.6",
     "@storybook/addon-options": "^4.0.0-rc.6",
     "@storybook/addon-storysource": "^4.0.0-rc.6",
@@ -52,13 +53,13 @@
     "jest": "^23.6.0",
     "jest-html-reporter": "^2.4.2",
     "prettier": "^1.14.3",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-test-renderer": "^16.5.2",
+    "prop-types": "^15.5.7-alpha.1",
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0",
+    "react-test-renderer": "^16.7.0-alpha.0",
     "style-loader": "^0.23.1"
   },
   "dependencies": {
-    "@storybook/addon-info": "^4.0.0-rc.6",
     "classnames": "^2.2.5",
     "memoize-one": "^4.0.2"
   },

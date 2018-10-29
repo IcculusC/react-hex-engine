@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { HexEngineProvider } from "./Context";
@@ -32,9 +32,21 @@ const HexEngine = props => {
   } = props;
 
   const orientation = flat ? Orientation.Flat : Orientation.Pointy;
-  const points = calculateCoordinates(orientation, size)
-    .map(point => point.toString())
-    .join(" ");
+  const [points, setPoints] = useState(
+    calculateCoordinates(orientation, size)
+      .map(point => point.toString())
+      .join(" ")
+  );
+  useEffect(
+    () => {
+      setPoints(() =>
+        calculateCoordinates(orientation, size)
+          .map(point => point.toString())
+          .join(" ")
+      );
+    },
+    [orientation, size]
+  );
   const layout = { orientation, origin, size, spacing };
 
   return (
