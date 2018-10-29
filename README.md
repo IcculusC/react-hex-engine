@@ -7,7 +7,38 @@
 
 # react-hex-engine
 
-Check out the [storybook](https://icculusc.github.io/react-hex-engine) for the existing documentation.  Improvements to the docs are in the pipeline!
+* [Installation](#installation)
+* [Usage](#usage)
+* [react-hex-grid](#credit) - credit where credit is due
+
+### Installation
+`yarn add react-hex-engine`
+
+### Usage
+
+##### Basic Example
+
+This is the only example for now, but you can see more source in the [storybook](https://icculusc.github.io/react-hex-engine).
+
+```
+import React from "react";
+import { Hexagon, HexEngine } from "react-hex-engine";
+
+const HexMap = () => (
+  <HexEngine
+    spacing={1.05}
+    width={320}
+    height={240}
+    viewBox={{ x: -30, y: -30, width: 60, height: 60 }}
+  >
+    <Hexagon q={-1} r={0} s={1} />
+    <Hexagon q={0} r={0} s={0} />
+    <Hexagon q={1} r={0} s={-1} />
+  </HexEngine>
+)
+```
+
+# Credit
 
 Originally forked from [https://github.com/Hellenic/react-hexgrid](https://github.com/Hellenic/react-hexgrid)
 
@@ -22,6 +53,3 @@ Quote from the original readme
 > With inspiration from
 [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
 
-# Documentation
-
-Documentation forthcoming alongside stable APIs.
