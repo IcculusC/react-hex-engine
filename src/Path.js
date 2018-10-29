@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import HexUtils from "./HexUtils";
-import { withHexEngine } from "./Context";
+import { HexEngineContext } from "./Context";
 
 function getPoints(start, end, layout) {
   if (!end || !start) {
@@ -21,9 +21,10 @@ function getPoints(start, end, layout) {
   return `M${points}`;
 }
 
-export const Path = ({ start, end, layout }) => (
-  <path d={getPoints(start, end, layout)} />
-);
+export const Path = ({ start, end }) => {
+  const { layout } = useContext(HexEngineContext);
+  return <path d={getPoints(start, end, layout)} />;
+};
 
 Path.propTypes = {
   end: PropTypes.object,
@@ -32,4 +33,4 @@ Path.propTypes = {
 };
 
 export const Path_ = Path;
-export default withHexEngine(Path_);
+export default Path_;
