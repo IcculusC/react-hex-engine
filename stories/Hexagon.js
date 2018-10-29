@@ -10,22 +10,9 @@ import Point from "../src/models/Point";
 import { manager } from "@storybook/addon-knobs/dist/registerKnobs";
 import "./Hexagon.css";
 
-class SelectableHexagon extends React.Component {
-  state = { selected: false };
-
-  onClick = () => {
-    this.setState({ selected: !this.state.selected });
-  };
-
-  render() {
-    const { hex, ...rest } = this.props;
-    const { selected } = this.state;
-
-    return (
-      <Hexagon {...hex} {...rest} selected={selected} onClick={this.onClick} />
-    );
-  }
-}
+Hexagon.displayName = "Hexagon";
+Hexagon_.displayName = "Hexagon";
+HexEngine.displayName = "HexEngine";
 
 const stories = storiesOf("Hexagon", module);
 
@@ -91,7 +78,7 @@ stories.add(
       inline: true,
       maxPropStringLength: 512,
       propTables: [Hexagon_], // should be able to fix this with useContext in react 16.7.x
-      propTablesExclude: [SelectableHexagon, HexEngine],
+      propTablesExclude: [HexEngine, Hexagon],
       source: false,
       excludedPropTypes: [
         "data",

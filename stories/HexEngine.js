@@ -8,6 +8,8 @@ import HexEngine from "../src/HexEngine";
 import Point from "../src/models/Point";
 
 Hexagon.displayName = "Hexagon";
+Hexagon_.displayName = "Hexagon";
+HexEngine.displayName = "HexEngine";
 
 const stories = storiesOf("HexEngine", module);
 
@@ -18,8 +20,8 @@ stories.addDecorator(
     header: false,
     inline: true,
     maxPropStringLength: 512,
-    propTablesExclude: [HexEngine, Hexagon_, Hexagon],
-    source: true
+    source: true,
+    propTablesExclude: [Hexagon_, Hexagon]
   })
 );
 
@@ -27,15 +29,15 @@ stories
   .add(
     "Kitchen Sink",
     () => {
-      const flat = boolean("flat", false, "HexEngine");
+      const flat = boolean("flat", true, "HexEngine");
       const size = object("size", { x: 10, y: 10 }, "HexEngine");
       const origin = object("origin", { x: 0, y: 0 }, "HexEngine");
       const spacing = number("spacing", 1.0, {}, "HexEngine");
-      const width = number("width", 640, {}, "HexEngine");
-      const height = number("height", 480, {}, "HexEngine");
+      const width = number("width", 320, {}, "HexEngine");
+      const height = number("height", 240, {}, "HexEngine");
       const viewBox = object(
         "viewBox",
-        { x: -25, y: -25, width: 50, height: 50 },
+        { x: -30, y: -30, width: 60, height: 60 },
         "HexEngine"
       );
 
@@ -61,27 +63,17 @@ stories
       }
     }
   )
-  .add("One Lonely Hexagon", () => (
-    <HexEngine width={320} height={240}>
-      <Hexagon q={0} r={0} s={0} />
-    </HexEngine>
-  ))
-  .add("Different Origin", () => (
+  .add("non zero origin", () => (
     <HexEngine
-      origin={new Point(15, 25)}
+      origin={new Point(-5, -5)}
       width={320}
       height={240}
-      viewBox={{
-        x: -25,
-        y: -25,
-        width: 50,
-        height: 50
-      }}
+      viewBox={{ x: -30, y: -30, width: 60, height: 60 }}
     >
       <Hexagon q={0} r={0} s={0} />
     </HexEngine>
   ))
-  .add("Pointy!", () => (
+  .add("pointy orientation", () => (
     <HexEngine
       flat={false}
       width={320}
@@ -96,65 +88,45 @@ stories
       <Hexagon q={0} r={0} s={0} />
     </HexEngine>
   ))
-  .add("Bigger!", () => (
+  .add("bigger size", () => (
     <HexEngine
-      size={new Point(15, 15)}
+      size={new Point(30, 30)}
       width={320}
       height={240}
-      viewBox={{
-        x: -25,
-        y: -25,
-        width: 50,
-        height: 50
-      }}
+      viewBox={{ x: -30, y: -30, width: 60, height: 60 }}
     >
       <Hexagon q={0} r={0} s={0} />
     </HexEngine>
   ))
-  .add("Smaller!", () => (
+  .add("smaller size", () => (
     <HexEngine
-      size={new Point(5, 5)}
+      size={new Point(3, 3)}
       width={320}
       height={240}
-      viewBox={{
-        x: -25,
-        y: -25,
-        width: 50,
-        height: 50
-      }}
+      viewBox={{ x: -30, y: -30, width: 60, height: 60 }}
     >
       <Hexagon q={0} r={0} s={0} />
     </HexEngine>
   ))
-  .add("Oddly Proportioned!", () => (
+  .add("irregular proportions", () => (
     <HexEngine
       size={new Point(15, 5)}
       width={320}
       height={240}
-      viewBox={{
-        x: -25,
-        y: -25,
-        width: 50,
-        height: 50
-      }}
+      viewBox={{ x: -30, y: -30, width: 60, height: 60 }}
     >
       <Hexagon q={0} r={0} s={0} />
     </HexEngine>
   ))
-  .add("Spacing!", () => (
+  .add("spacing", () => (
     <HexEngine
       spacing={1.05}
       width={320}
       height={240}
-      viewBox={{
-        x: -25,
-        y: -25,
-        width: 50,
-        height: 50
-      }}
+      viewBox={{ x: -30, y: -30, width: 60, height: 60 }}
     >
-      {GridGenerator.hexagon(1).map(hex => (
-        <Hexagon {...hex} key={hex.toString()} />
-      ))}
+      <Hexagon q={-1} r={0} s={1} />
+      <Hexagon q={0} r={0} s={0} />
+      <Hexagon q={1} r={0} s={-1} />
     </HexEngine>
   ));
