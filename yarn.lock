@@ -3608,6 +3608,16 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
+flatbush@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/flatbush/-/flatbush-3.1.0.tgz#ccd6957685a7db95d2fc27f5d4f24b7131d46553"
+  dependencies:
+    flatqueue "^1.1.0"
+
+flatqueue@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/flatqueue/-/flatqueue-1.1.0.tgz#bc03140d40940c4cb799d18d45eaced176c3ef2d"
+
 flush-write-stream@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.0.3.tgz#c5d586ef38af6097650b49bc41b55fabb19f35bd"
@@ -5261,10 +5271,6 @@ mem@^1.1.0:
   resolved "https://registry.yarnpkg.com/mem/-/mem-1.1.0.tgz#5edd52b485ca1d900fe64895505399a0dfa45f76"
   dependencies:
     mimic-fn "^1.0.0"
-
-memoize-one@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-4.0.2.tgz#3fb8db695aa14ab9c0f1644e1585a8806adc1aee"
 
 memory-fs@^0.4.0, memory-fs@~0.4.1:
   version "0.4.1"

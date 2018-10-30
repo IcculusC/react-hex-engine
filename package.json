@@ -28,8 +28,8 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.1.2",
     "@storybook/addon-centered": "^3.4.11",
-    "@storybook/addon-knobs": "^4.0.0-rc.6",
     "@storybook/addon-info": "^4.0.0-rc.6",
+    "@storybook/addon-knobs": "^4.0.0-rc.6",
     "@storybook/addon-notes": "^4.0.0-rc.6",
     "@storybook/addon-options": "^4.0.0-rc.6",
     "@storybook/addon-storysource": "^4.0.0-rc.6",
@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "memoize-one": "^4.0.2"
+    "flatbush": "^3.1.0"
   },
   "files": [
     "lib/**/*"
