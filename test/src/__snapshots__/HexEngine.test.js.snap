@@ -67,3 +67,145 @@ exports[`HexEngine HexEngine should render correctly with pointy orientation 1`]
   </g>
 </svg>
 `;
+
+exports[`IndexedEngine IndexedEngine should render correctly with default props 1`] = `
+<svg
+  className="grid"
+  height={480}
+  version="1.1"
+  viewBox="-50 -50 100 100"
+  width={640}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g
+    className="test1"
+  >
+    <g
+      className="hexagon-group"
+      draggable="true"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      transform="translate(-45, -25.98076211353316)"
+    >
+      <g
+        className="hexagon"
+      >
+        <polygon
+          className=""
+          points="10,0 5.000000000000001,8.660254037844386 -4.999999999999998,8.660254037844387 -10,1.2246467991473533e-15 -5.000000000000004,-8.660254037844386 5.000000000000001,-8.660254037844386"
+        />
+      </g>
+    </g>
+    <g
+      className="hexagon-group"
+      draggable="true"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      transform="translate(-30, -17.32050807568877)"
+    >
+      <g
+        className="hexagon"
+      >
+        <polygon
+          className=""
+          points="10,0 5.000000000000001,8.660254037844386 -4.999999999999998,8.660254037844387 -10,1.2246467991473533e-15 -5.000000000000004,-8.660254037844386 5.000000000000001,-8.660254037844386"
+        />
+      </g>
+    </g>
+    <g
+      className="hexagon-group"
+      draggable="true"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      transform="translate(-15, -8.660254037844386)"
+    >
+      <g
+        className="hexagon"
+      >
+        <polygon
+          className=""
+          points="10,0 5.000000000000001,8.660254037844386 -4.999999999999998,8.660254037844387 -10,1.2246467991473533e-15 -5.000000000000004,-8.660254037844386 5.000000000000001,-8.660254037844386"
+        />
+      </g>
+    </g>
+    <g
+      className="hexagon-group"
+      draggable="true"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      transform="translate(0, 0)"
+    >
+      <g
+        className="hexagon"
+      >
+        <polygon
+          className=""
+          points="10,0 5.000000000000001,8.660254037844386 -4.999999999999998,8.660254037844387 -10,1.2246467991473533e-15 -5.000000000000004,-8.660254037844386 5.000000000000001,-8.660254037844386"
+        />
+      </g>
+    </g>
+    <g
+      className="hexagon-group"
+      draggable="true"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      transform="translate(15, 8.660254037844386)"
+    >
+      <g
+        className="hexagon"
+      >
+        <polygon
+          className=""
+          points="10,0 5.000000000000001,8.660254037844386 -4.999999999999998,8.660254037844387 -10,1.2246467991473533e-15 -5.000000000000004,-8.660254037844386 5.000000000000001,-8.660254037844386"
+        />
+      </g>
+    </g>
+    <g
+      className="hexagon-group"
+      draggable="true"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      transform="translate(30, 17.32050807568877)"
+    >
+      <g
+        className="hexagon"
+      >
+        <polygon
+          className=""
+          points="10,0 5.000000000000001,8.660254037844386 -4.999999999999998,8.660254037844387 -10,1.2246467991473533e-15 -5.000000000000004,-8.660254037844386 5.000000000000001,-8.660254037844386"
+        />
+      </g>
+    </g>
+    <g
+      className="hexagon-group"
+      draggable="true"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      transform="translate(45, 25.98076211353316)"
+    >
+      <g
+        className="hexagon"
+      >
+        <polygon
+          className=""
+          points="10,0 5.000000000000001,8.660254037844386 -4.999999999999998,8.660254037844387 -10,1.2246467991473533e-15 -5.000000000000004,-8.660254037844386 5.000000000000001,-8.660254037844386"
+        />
+      </g>
+    </g>
+  </g>
+</svg>
+`;

@@ -6,6 +6,8 @@ import GridGenerator from "../src/GridGenerator";
 import Hexagon, { Hexagon_ } from "../src/Hexagon";
 import HexEngine from "../src/HexEngine";
 import Point from "../src/models/Point";
+import IndexedEngine from "../src/IndexedEngine";
+import "./Hexagon.css";
 
 Hexagon.displayName = "Hexagon";
 Hexagon_.displayName = "Hexagon";
@@ -129,4 +131,42 @@ stories
       <Hexagon q={0} r={0} s={0} />
       <Hexagon q={1} r={0} s={-1} />
     </HexEngine>
-  ));
+  ))
+  .add("indexed", () => {
+    const viewBox = object(
+      "viewBox",
+      { x: -50, y: -50, width: 100, height: 100 },
+      "HexEngine"
+    );
+    const map = GridGenerator.hexagon(50);
+    const classes = {
+      hexagon: "showCoordinates text",
+      highlighted: "highlighted",
+      hovered: "hovered",
+      selected: "selected",
+      q: "axis",
+      r: "axis",
+      s: "axis",
+      text: "text"
+    };
+    return (
+      <IndexedEngine
+        height={400}
+        map={map}
+        viewBox={viewBox}
+        width={400}
+        spacing={1.05}
+      >
+        {hexes =>
+          hexes.map(hex => (
+            <Hexagon
+              {...hex}
+              classes={classes}
+              showCoordinates
+              selected={Math.random() > 0.5}
+            />
+          ))
+        }
+      </IndexedEngine>
+    );
+  });
